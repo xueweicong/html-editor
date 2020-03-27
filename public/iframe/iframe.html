@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="v-container" :style="template && template[root].options">
+        <template v-if="template && root">
+          <template v-for="item in template[root].children" :key="item">
+            <div
+              class="v-article-container v-header-container"
+              v-if="item == 'header'"
+              :style="template[item].options"
+            >
+              <div class="v-article-wrapper">
+                <div class="v-article-main">
+                  <template
+                    v-for="_item in template[item].children"
+                    :key="_item"
+                  >
+                    <template v-if="_item == 'header_image'">
+                      <img
+                        class="image-3"
+                        v-show="template[_item].options && template[_item].options.show"
+                        :src="template[_item].options && template[_item].options.src"
+                      />
+                    </template>
+                    <template v-if="_item == 'header_title'">
+                      <p
+                        class="title-3"
+                        v-show="template[_item].options && template[_item].options.show"
+                      >
+                        {{ template[_item].options &&
+                        template[_item].options.value }}
+                      </p>
+                    </template>
+                    <template v-if="_item == 'header_subtitle'">
+                      <p
+                        class="subtitle-3"
+                        v-show="template[_item].options && template[_item].options.show"
+                      >
+                        {{ template[_item].options &&
+                        template[_item].options.value }}
+                      </p>
+                    </template>
+                    <template v-if="_item == 'header_content'">
+                      <p
+                        class="content-3"
+                        v-show="template[_item].options && template[_item].options.show"
+                      >
+                        {{ template[_item].options &&
+                        template[_item].options.value }}
+                      </p>
+                    </template>
+                  </template>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-article-container"
+              v-if="item == 'article_1'"
+              :style="template[item].options"
+            >
+              <div class="v-article-wrapper">
+                <div class="v-article-main">
+                  <template
+                    v-for="_item in template[item].children"
+                    :key="_item"
+                  >
+                    <template v-if="_item == 'article_1_image'">
+                      <img
+                        class="image"
+                        v-show="template[_item].options && template[_item].options.show"
+                        :src="template[_item].options && template[_item].options.src"
+                      />
+                    </template>
+                    <template v-if="_item == 'article_1_title'">
+                      <p
+                        class="title"
+                        v-show="template[_item].options && template[_item].options.show"
+                      >
+                        {{ template[_item].options &&
+                        template[_item].options.value }}
+                      </p>
+                    </template>
+                    <template v-if="_item == 'article_1_subtitle'">
+                      <p
+                        class="subtitle"
+                        v-show="template[_item].options && template[_item].options.show"
+                      >
+                        {{ template[_item].options &&
+                        template[_item].options.value }}
+                      </p>
+                    </template>
+                    <template v-if="_item == 'article_1_content'">
+                      <p
+                        class="content"
+                        v-show="template[_item].options && template[_item].options.show"
+                      >
+                        {{ template[_item].options &&
+                        template[_item].options.value }}
+                      </p>
+                    </template>
+                  </template>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-article-container v-article-container-2"
+              v-if="item == 'article_2'"
+              :style="template[item].options"
+            >
+              <div class="v-article-wrapper">
+                <div class="v-article-main">
+                  <template
+                    v-for="_item in template[item].children"
+                    :key="_item"
+                  >
+                    <template v-if="_item == 'article_2_image'">
+                      <img
+                        class="image-2"
+                        v-show="template[_item].options && template[_item].options.show"
+                        :src="template[_item].options && template[_item].options.src"
+                      />
+                    </template>
+                    <template v-if="_item == 'article_2_title'">
+                      <p
+                        class="title-2"
+                        v-show="template[_item].options && template[_item].options.show"
+                      >
+                        {{ template[_item].options &&
+                        template[_item].options.value }}
+                      </p>
+                    </template>
+                    <template v-if="_item == 'article_2_subtitle'">
+                      <p
+                        class="subtitle-2"
+                        v-show="template[_item].options && template[_item].options.show"
+                      >
+                        {{ template[_item].options &&
+                        template[_item].options.value }}
+                      </p>
+                    </template>
+                    <template v-if="_item == 'article_2_content'">
+                      <p
+                        class="content-2"
+                        v-show="template[_item].options && template[_item].options.show"
+                      >
+                        {{ template[_item].options &&
+                        template[_item].options.value }}
+                      </p>
+                    </template>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </template>
+        </template>
+      </div>
+    </div>
+  </body>
+  <!-- 引入Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <!-- 引入组件库 -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <!-- 引入http-vue-loader -->
+  <!-- <script src="https://unpkg.com/http-vue-loader"></script> -->
+  <script>
+    // Vue.use(httpVueLoader);
+    var app = new Vue({
+      el: "#app",
+      // components: {
+      //   vArticle: httpVueLoader("components/vArticle.vue")
+      // },
+      data() {
+        return {
+          root: "root",
+          base_style: {},
+          template: null,
+          current_module: ""
+        };
+      },
+      mounted() {
+        window.addEventListener("message", this.handleMessage);
+        this.handleMessageToParent({
+          cmd: "init",
+          data: {}
+        });
+      },
+      methods: {
+        handleMessage(event) {
+          if (event.data && event.data.cmd == "update") {
+            this.render(event.data.data);
+          }
+        },
+        handleMessageToParent(params) {
+          window.parent.postMessage(params, "*");
+        },
+        render({ template, current_module }) {
+          this.template = template;
+          this.current_module = current_module;
+        }
+      }
+    });
+  </script>
+</html>
