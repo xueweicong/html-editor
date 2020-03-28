@@ -1,52 +1,4 @@
 const template = {
-  // root: {
-  //   uid: "root",
-  //   label: "网页设置",
-  //   options: {
-  //     name: {
-  //       label: "标题",
-  //       value: "My world",
-  //       required: false
-  //     },
-  //     address: {
-  //       label: "link",
-  //       value: "",
-  //       required: false
-  //     },
-  //     backgroundColor: {
-  //       label: "背景色",
-  //       value: "#fff",
-  //       required: false
-  //     },
-  //     textAlign: {
-  //       label: "字体方向",
-  //       value: "center",
-  //       required: true
-  //     },
-  //     fontSize: {
-  //       label: "字体大小",
-  //       value: "14px",
-  //       required: true
-  //     },
-  //     fontColor: {
-  //       label: "字体颜色",
-  //       value: "#000",
-  //       required: true
-  //     },
-  //     fontFamily: {
-  //       label: "字体样式",
-  //       value:
-  //         '"Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", "Arial", "sans-serif"',
-  //       required: false
-  //     },
-  //     children: {
-  //       label: "子模块",
-  //       required: false,
-  //       protect: true,
-  //       value: ["article_1"]
-  //     }
-  //   }
-  // },
   root: "root",
   module: {
     root: {
@@ -291,6 +243,140 @@ const template = {
         }
       }
     },
+    header_image: {
+      uid: "header_image",
+      parent_uid: "header",
+      label: "页头模块-图片",
+      children: [],
+      options: {
+        show: {
+          label: "是否可见",
+          value: true,
+          type: "radio",
+          options: [
+            {
+              label: "显示",
+              value: true
+            },
+            {
+              label: "隐藏",
+              value: false
+            }
+          ],
+          default: false,
+          placeholder: "",
+          required: false
+        },
+        src: {
+          label: "图片地址",
+          type: "input",
+          value: "http://qiniu-store.adonging.com/Fpym6HzJ5oORVJksC4CFXso0vvb7",
+          required: false
+        }
+      }
+    },
+    header_title: {
+      uid: "header_title",
+      parent_uid: "header",
+      label: "页头模块-标题",
+      children: [],
+      options: {
+        show: {
+          label: "是否可见",
+          value: true,
+          type: "radio",
+          options: [
+            {
+              label: "显示",
+              value: true
+            },
+            {
+              label: "隐藏",
+              value: false
+            }
+          ],
+          default: false,
+          placeholder: "",
+          required: false
+        },
+        value: {
+          label: "内容",
+          value: "DREAMER",
+          type: "input",
+          default: "Title",
+          placeholder: "缺省值为Title",
+          required: false
+        }
+      }
+    },
+    header_subtitle: {
+      uid: "header_subtitle",
+      parent_uid: "header",
+      label: "页头模块-副标题",
+      children: [],
+      options: {
+        show: {
+          label: "是否可见",
+          value: true,
+          type: "radio",
+          options: [
+            {
+              label: "显示",
+              value: true
+            },
+            {
+              label: "隐藏",
+              value: false
+            }
+          ],
+          default: false,
+          placeholder: "",
+          required: false
+        },
+        value: {
+          label: "内容",
+          value: "HERE I AM",
+          type: "input",
+          default: "Subtitle",
+          placeholder: "缺省值为Subtitle",
+          required: false
+        }
+      }
+    },
+    header_content: {
+      uid: "header_content",
+      parent_uid: "header",
+      label: "页头模块-文章",
+      children: [],
+      options: {
+        show: {
+          label: "是否可见",
+          value: false,
+          type: "radio",
+          options: [
+            {
+              label: "显示",
+              value: true
+            },
+            {
+              label: "隐藏",
+              value: false
+            }
+          ],
+          default: false,
+          placeholder: "",
+          required: false
+        },
+        value: {
+          label: "内容",
+          value: "",
+          type: "input",
+          default: "Content",
+          placeholder: "缺省值为Content",
+          required: false
+        }
+      }
+    },
     article_1_image: {
       uid: "article_1_image",
       parent_uid: "article_1",
@@ -530,140 +616,6 @@ const template = {
       uid: "article_2_content",
       parent_uid: "article_2",
       label: "内容模块2-文章",
-      children: [],
-      options: {
-        show: {
-          label: "是否可见",
-          value: false,
-          type: "radio",
-          options: [
-            {
-              label: "显示",
-              value: true
-            },
-            {
-              label: "隐藏",
-              value: false
-            }
-          ],
-          default: false,
-          placeholder: "",
-          required: false
-        },
-        value: {
-          label: "内容",
-          value: "",
-          type: "input",
-          default: "Content",
-          placeholder: "缺省值为Content",
-          required: false
-        }
-      }
-    },
-    header_image: {
-      uid: "header_image",
-      parent_uid: "header",
-      label: "页头模块-图片",
-      children: [],
-      options: {
-        show: {
-          label: "是否可见",
-          value: true,
-          type: "radio",
-          options: [
-            {
-              label: "显示",
-              value: true
-            },
-            {
-              label: "隐藏",
-              value: false
-            }
-          ],
-          default: false,
-          placeholder: "",
-          required: false
-        },
-        src: {
-          label: "图片地址",
-          type: "input",
-          value: "http://qiniu-store.adonging.com/Fpym6HzJ5oORVJksC4CFXso0vvb7",
-          required: false
-        }
-      }
-    },
-    header_title: {
-      uid: "header_title",
-      parent_uid: "header",
-      label: "页头模块-标题",
-      children: [],
-      options: {
-        show: {
-          label: "是否可见",
-          value: true,
-          type: "radio",
-          options: [
-            {
-              label: "显示",
-              value: true
-            },
-            {
-              label: "隐藏",
-              value: false
-            }
-          ],
-          default: false,
-          placeholder: "",
-          required: false
-        },
-        value: {
-          label: "内容",
-          value: "DREAMER",
-          type: "input",
-          default: "Title",
-          placeholder: "缺省值为Title",
-          required: false
-        }
-      }
-    },
-    header_subtitle: {
-      uid: "header_subtitle",
-      parent_uid: "header",
-      label: "页头模块-副标题",
-      children: [],
-      options: {
-        show: {
-          label: "是否可见",
-          value: true,
-          type: "radio",
-          options: [
-            {
-              label: "显示",
-              value: true
-            },
-            {
-              label: "隐藏",
-              value: false
-            }
-          ],
-          default: false,
-          placeholder: "",
-          required: false
-        },
-        value: {
-          label: "内容",
-          value: "HERE I AM",
-          type: "input",
-          default: "Subtitle",
-          placeholder: "缺省值为Subtitle",
-          required: false
-        }
-      }
-    },
-    header_content: {
-      uid: "header_content",
-      parent_uid: "header",
-      label: "页头模块-文章",
       children: [],
       options: {
         show: {

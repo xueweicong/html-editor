@@ -10,7 +10,8 @@
         >
           <el-form-item label="当前编辑模块">
             <el-select
-              v-model="current_module"
+              :value="current_module"
+              @change="onModuleChange"
               placeholder="请选择当前编辑模块"
             >
               <el-option
@@ -28,7 +29,7 @@
     <v-form
       ref="vForm"
       @update-template="updateTemplate"
-      @switch-module="switchModule"
+      @switch-module="onModuleChange"
       :template="template.module"
       :current-module="current_module"
     ></v-form>
@@ -39,7 +40,7 @@ import vForm from "@/components/vForm.vue";
 export default {
   name: "vEditor",
   components: {
-    vForm
+    vForm // 模块的form表单
   },
   props: {
     template: {
@@ -49,11 +50,12 @@ export default {
   },
   data() {
     return {
-      current_module: "root"
+      current_module: "root" // 选中模块
     };
   },
   computed: {
     module_options: function() {
+      // 选中模块select的选项数组
       let options = [];
       let template_module = this.template.module || {};
       for (let key in template_module) {
@@ -62,15 +64,25 @@ export default {
           value: template_module[key].uid
         });
       }
-
       return options;
     }
   },
   created() {},
-  mounted() {},
+  mounted() {
+    this.$on("switch-module", res => {
+      // 监听父组件传过来更改当前模块的事件
+      this.current_module = res;
+    });
+  },
   methods: {
     updateTemplate() {
-      this.$emit("update-dom", this.template, this.current_module);
+      // 发送模板更新事件
+      this.$emit("update-module", this.template, this.current_module);
+    },
+    onModuleChange(value) {
+      // select 值变化回调
+      this.current_module = value;
+      this.$emit("switch-module", value);
     },
     switchModule(value) {
       this.current_module = value;

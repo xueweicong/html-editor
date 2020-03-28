@@ -1,14 +1,24 @@
 <template>
-    <div class="v-article-container" :style="options">
-      <div class="v-article-wrapper">
-        <div class="v-article-main">
-          <img class="image" src="http://qiniu-store.adonging.com/FoiE8SLgRAp5rLu2x_YP--7Gxebx" />
-          <p class="title">GETTING STARTEDWWW</p>
-          <p class="subtitle">The Roots</p>
-          <p class="content">For years, I have served as a useful source to those seeking inspiration, help, or advice. In 2000, I finally decided to own that role and be intentional about it. I started writing about my passions, my thoughts, and curious wonderings about our society. I founded dreamer with a mission to give others a taste of what goes on in my mind, and it has been a wild success ever since.</p>
-        </div>
+  <div class="v-article-container" :style="options">
+    <div class="v-article-wrapper">
+      <div class="v-article-main">
+        <img
+          class="image"
+          src="http://qiniu-store.adonging.com/FoiE8SLgRAp5rLu2x_YP--7Gxebx"
+        />
+        <p class="title">GETTING STARTEDWWW</p>
+        <p class="subtitle">The Roots</p>
+        <p class="content">
+          For years, I have served as a useful source to those seeking
+          inspiration, help, or advice. In 2000, I finally decided to own that
+          role and be intentional about it. I started writing about my passions,
+          my thoughts, and curious wonderings about our society. I founded
+          dreamer with a mission to give others a taste of what goes on in my
+          mind, and it has been a wild success ever since.
+        </p>
       </div>
     </div>
+  </div>
 </template>
 <script>
 module.exports = {
@@ -19,9 +29,7 @@ module.exports = {
       default: () => {}
     }
   },
-  created() {
-    console.log(6666)
-  },
+  created() {}
 };
 </script>
 <style scoped>

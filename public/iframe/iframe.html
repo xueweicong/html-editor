@@ -19,12 +19,15 @@
   <body>
     <div id="app">
       <div class="v-container" :style="template && template[root].options">
+        <!-- 原本计划编写更多可编辑的参数页面更加丰富，迫于时间问题暂时如此。 -->
         <template v-if="template && root">
           <template v-for="item in template[root].children" :key="item">
             <div
               class="v-article-container v-header-container"
               v-if="item == 'header'"
               :style="template[item].options"
+              :class="[current_module == item ? 'actived' : 'deactivated']"
+              @click.stop="switchModule(item)"
             >
               <div class="v-article-wrapper">
                 <div class="v-article-main">
@@ -32,40 +35,50 @@
                     v-for="_item in template[item].children"
                     :key="_item"
                   >
-                    <template v-if="_item == 'header_image'">
+                    <div
+                      v-if="_item == 'header_image'"
+                      :class="[current_module == _item ? 'actived' : 'deactivated']"
+                      v-show="template[_item].options && template[_item].options.show"
+                      @click.stop="switchModule(_item)"
+                    >
                       <img
                         class="image-3"
-                        v-show="template[_item].options && template[_item].options.show"
                         :src="template[_item].options && template[_item].options.src"
                       />
-                    </template>
-                    <template v-if="_item == 'header_title'">
-                      <p
-                        class="title-3"
-                        v-show="template[_item].options && template[_item].options.show"
-                      >
+                    </div>
+                    <div
+                      v-if="_item == 'header_title'"
+                      :class="[current_module == _item ? 'actived' : 'deactivated']"
+                      v-show="template[_item].options && template[_item].options.show"
+                      @click.stop="switchModule(_item)"
+                    >
+                      <p class="title-3">
                         {{ template[_item].options &&
                         template[_item].options.value }}
                       </p>
-                    </template>
-                    <template v-if="_item == 'header_subtitle'">
-                      <p
-                        class="subtitle-3"
-                        v-show="template[_item].options && template[_item].options.show"
-                      >
+                    </div>
+                    <div
+                      v-if="_item == 'header_subtitle'"
+                      :class="[current_module == _item ? 'actived' : 'deactivated']"
+                      v-show="template[_item].options && template[_item].options.show"
+                      @click.stop="switchModule(_item)"
+                    >
+                      <p class="subtitle-3">
                         {{ template[_item].options &&
                         template[_item].options.value }}
                       </p>
-                    </template>
-                    <template v-if="_item == 'header_content'">
-                      <p
-                        class="content-3"
-                        v-show="template[_item].options && template[_item].options.show"
-                      >
+                    </div>
+                    <div
+                      v-if="_item == 'header_content'"
+                      :class="[current_module == _item ? 'actived' : 'deactivated']"
+                      v-show="template[_item].options && template[_item].options.show"
+                      @click.stop="switchModule(_item)"
+                    >
+                      <p class="content-3">
                         {{ template[_item].options &&
                         template[_item].options.value }}
                       </p>
-                    </template>
+                    </div>
                   </template>
                 </div>
               </div>
@@ -74,6 +87,8 @@
               class="v-article-container"
               v-if="item == 'article_1'"
               :style="template[item].options"
+              :class="[current_module == item ? 'actived' : 'deactivated']"
+              @click.stop="switchModule(item)"
             >
               <div class="v-article-wrapper">
                 <div class="v-article-main">
@@ -81,40 +96,51 @@
                     v-for="_item in template[item].children"
                     :key="_item"
                   >
-                    <template v-if="_item == 'article_1_image'">
+                    <div
+                      v-if="_item == 'article_1_image'"
+                      :class="[current_module == _item ? 'actived' : 'deactivated']"
+                      v-show="template[_item].options && template[_item].options.show"
+                      @click.stop="switchModule(_item)"
+                    >
                       <img
                         class="image"
-                        v-show="template[_item].options && template[_item].options.show"
                         :src="template[_item].options && template[_item].options.src"
                       />
-                    </template>
-                    <template v-if="_item == 'article_1_title'">
-                      <p
-                        class="title"
-                        v-show="template[_item].options && template[_item].options.show"
-                      >
+                    </div>
+
+                    <div
+                      v-if="_item == 'article_1_title'"
+                      :class="[current_module == _item ? 'actived' : 'deactivated']"
+                      v-show="template[_item].options && template[_item].options.show"
+                      @click.stop="switchModule(_item)"
+                    >
+                      <p class="title">
                         {{ template[_item].options &&
                         template[_item].options.value }}
                       </p>
-                    </template>
-                    <template v-if="_item == 'article_1_subtitle'">
-                      <p
-                        class="subtitle"
-                        v-show="template[_item].options && template[_item].options.show"
-                      >
+                    </div>
+                    <div
+                      v-if="_item == 'article_1_subtitle'"
+                      :class="[current_module == _item ? 'actived' : 'deactivated']"
+                      v-show="template[_item].options && template[_item].options.show"
+                      @click.stop="switchModule(_item)"
+                    >
+                      <p class="subtitle">
                         {{ template[_item].options &&
                         template[_item].options.value }}
                       </p>
-                    </template>
-                    <template v-if="_item == 'article_1_content'">
-                      <p
-                        class="content"
-                        v-show="template[_item].options && template[_item].options.show"
-                      >
+                    </div>
+                    <div
+                      v-if="_item == 'article_1_content'"
+                      :class="[current_module == _item ? 'actived' : 'deactivated']"
+                      v-show="template[_item].options && template[_item].options.show"
+                      @click.stop="switchModule(_item)"
+                    >
+                      <p class="content">
                         {{ template[_item].options &&
                         template[_item].options.value }}
                       </p>
-                    </template>
+                    </div>
                   </template>
                 </div>
               </div>
@@ -123,6 +149,8 @@
               class="v-article-container v-article-container-2"
               v-if="item == 'article_2'"
               :style="template[item].options"
+              :class="[current_module == item ? 'actived' : 'deactivated']"
+              @click.stop="switchModule(item)"
             >
               <div class="v-article-wrapper">
                 <div class="v-article-main">
@@ -130,40 +158,50 @@
                     v-for="_item in template[item].children"
                     :key="_item"
                   >
-                    <template v-if="_item == 'article_2_image'">
+                    <div
+                      v-if="_item == 'article_2_image'"
+                      :class="[current_module == _item ? 'actived' : 'deactivated']"
+                      v-show="template[_item].options && template[_item].options.show"
+                      @click.stop="switchModule(_item)"
+                    >
                       <img
                         class="image-2"
-                        v-show="template[_item].options && template[_item].options.show"
                         :src="template[_item].options && template[_item].options.src"
                       />
-                    </template>
-                    <template v-if="_item == 'article_2_title'">
-                      <p
-                        class="title-2"
-                        v-show="template[_item].options && template[_item].options.show"
-                      >
+                    </div>
+                    <div
+                      v-if="_item == 'article_2_title'"
+                      :class="[current_module == _item ? 'actived' : 'deactivated']"
+                      v-show="template[_item].options && template[_item].options.show"
+                      @click.stop="switchModule(_item)"
+                    >
+                      <p class="title-2">
                         {{ template[_item].options &&
                         template[_item].options.value }}
                       </p>
-                    </template>
-                    <template v-if="_item == 'article_2_subtitle'">
-                      <p
-                        class="subtitle-2"
-                        v-show="template[_item].options && template[_item].options.show"
-                      >
+                    </div>
+                    <div
+                      v-if="_item == 'article_2_subtitle'"
+                      :class="[current_module == _item ? 'actived' : 'deactivated']"
+                      v-show="template[_item].options && template[_item].options.show"
+                      @click.stop="switchModule(_item)"
+                    >
+                      <p class="subtitle-2">
                         {{ template[_item].options &&
                         template[_item].options.value }}
                       </p>
-                    </template>
-                    <template v-if="_item == 'article_2_content'">
-                      <p
-                        class="content-2"
-                        v-show="template[_item].options && template[_item].options.show"
-                      >
+                    </div>
+                    <div
+                      v-if="_item == 'article_2_content'"
+                      :class="[current_module == _item ? 'actived' : 'deactivated']"
+                      v-show="template[_item].options && template[_item].options.show"
+                      @click.stop="switchModule(_item)"
+                    >
+                      <p class="content-2">
                         {{ template[_item].options &&
                         template[_item].options.value }}
                       </p>
-                    </template>
+                    </div>
                   </template>
                 </div>
               </div>
@@ -189,13 +227,13 @@
       data() {
         return {
           root: "root",
-          base_style: {},
-          template: null,
-          current_module: ""
+          template: null, // 网页模板
+          current_module: "" // 当前选中模板
         };
       },
       mounted() {
         window.addEventListener("message", this.handleMessage);
+        // 给父页面传递初始化完成消息
         this.handleMessageToParent({
           cmd: "init",
           data: {}
@@ -203,16 +241,32 @@
       },
       methods: {
         handleMessage(event) {
+          // 接收父页面的消息
           if (event.data && event.data.cmd == "update") {
+            // 更新模板消息
             this.render(event.data.data);
+          } else if (event.data && event.data.cmd == "switch") {
+            // 切换模块消息
+            this.current_module = event.data.data;
           }
         },
         handleMessageToParent(params) {
+          // 给父页面传递消息
           window.parent.postMessage(params, "*");
         },
         render({ template, current_module }) {
+          // 处理父页面模板更新
           this.template = template;
-          this.current_module = current_module;
+          this.current_module = current_module || this.root;
+        },
+        switchModule(item) {
+          if (item == this.current_module) return;
+          this.current_module = item;
+          // 发送切换模块消息
+          this.handleMessageToParent({
+            cmd: "switchModule",
+            data: item
+          });
         }
       }
     });

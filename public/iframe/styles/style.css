@@ -4,10 +4,18 @@ body {
 p {
   margin: 0;
 }
+.actived {
+  border: 1px dotted orange;
+  /* filter: brightness(1.5); */
+  cursor: pointer;
+}
+.deactivated {
+  cursor: pointer;
+}
 
 .v-article-container {
   width: 100%;
-  min-height: 200px;
+  min-height: 100px;
 }
 .v-article-wrapper {
   max-width: 960px;

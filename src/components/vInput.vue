@@ -1,6 +1,7 @@
 <template>
   <div class="v-input">
     <template v-if="option.type == 'input'">
+      <!-- input 类型 -->
       <el-input
         @input="onInput"
         :disabled="option.disabled"
@@ -17,6 +18,7 @@
         }}</template>
       </el-input>
     </template>
+    <!-- 单选 类型 -->
     <template v-else-if="option.type == 'radio'">
       <el-radio-group v-model="option.value" @change="onChange">
         <el-radio
@@ -27,6 +29,7 @@
         >
       </el-radio-group>
     </template>
+    <!-- 颜色 类型 -->
     <template v-else-if="option.type == 'color'">
       <el-color-picker
         v-model="option.value"
@@ -48,12 +51,12 @@ export default {
   mounted() {},
   methods: {
     onInput(value) {
-      console.log(value);
+      // input输入框的回调
       this.option.value = value;
       this.$emit("update-template");
     },
-    onChange(value) {
-      console.log(value);
+    onChange() {
+      // radio、color类型值改变的回调
       this.$emit("update-template");
     }
   }

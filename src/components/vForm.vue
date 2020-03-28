@@ -24,7 +24,7 @@
                 template[currentModule].children.length
             "
           >
-            <el-col :span="24" :key="index">
+            <el-col :span="24">
               <el-form-item label="子模块">
                 <div
                   class="link-box"
@@ -70,6 +70,7 @@ export default {
   mounted() {},
   methods: {
     chooseChildren(item) {
+      // 选中子模块，发送模板切换事件
       this.$emit("switch-module", item.value);
     }
   }
