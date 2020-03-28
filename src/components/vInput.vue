@@ -3,6 +3,8 @@
     <template v-if="option.type == 'input'">
       <!-- input 类型 -->
       <el-input
+        autosize
+        type="textarea"
         @input="onInput"
         :disabled="option.disabled"
         :value="option.value"

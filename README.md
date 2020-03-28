@@ -1,4 +1,4 @@
-# html-editor
+# html-editor(一个简易的网页实时编辑器)
 
 ## Project setup
 ```

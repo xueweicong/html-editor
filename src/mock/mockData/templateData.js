@@ -1,6 +1,7 @@
 const template = {
-  root: "root",
+  root: "root", // 根模块
   module: {
+    // 各个模块
     root: {
       uid: "root",
       parent_uid: null,
@@ -20,14 +21,6 @@ const template = {
         }
       ],
       options: {
-        // name: {
-        //   label: "标题",
-        //   value: "",
-        //   type: "input",
-        //   default: "My world",
-        //   placeholder: "",
-        //   required: false
-        // },
         backgroundColor: {
           label: "背景色",
           value: "#000",
@@ -73,12 +66,6 @@ const template = {
           placeholder: "缺省值为#000000",
           required: false
         }
-        // children: {
-        //   label: "子模块",
-        //   required: false,
-        //   protect: true,
-        //   value: ["article_1"]
-        // }
       }
     },
     header: {
